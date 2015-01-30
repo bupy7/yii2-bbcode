@@ -4,9 +4,9 @@
 
 | **BB-code** | **HTML**  | **Result** |
 |-------------|-----------|------------|
-| [b]bold[/b] | <strong>bold</strong>
-| [i]italic[/i] |
-| [u]underline[/u] |
+| [b]bold[/b] | ```<strong>bold</strong>```
+| [i]italic[/i] | ```<em>italic</em>```
+| [u]underline[/u] | ```<u>underline</u>```
 | [list]<br>[\*]first<br>[\*]second<br>[/list] |
 | [list=1]<br>[\*]first<br>[\*]second<br>[/list] |
 | [url=http://github.com]GitHub[/url] |
