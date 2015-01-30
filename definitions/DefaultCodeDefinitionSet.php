@@ -28,7 +28,7 @@ use bupy7\bbcode\validators\NumberValidator;
  * [center]text by center[/center]
  * [right]text align by right[/right]
  * [left]text align by left[/left]
- * [hr][/hr]
+ * [hr]horizontal line[/hr]
  *
  * @author Belosludcev Vasilij http://github.com/bupy7
  */
