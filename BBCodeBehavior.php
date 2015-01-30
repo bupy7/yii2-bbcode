@@ -7,12 +7,16 @@ use yii\base\Behavior;
 use yii\db\ActiveRecord;
 use yii\base\InvalidConfigException;
 use JBBCode\Parser;
+use JBBCode\CodeDefinitionBuilder;
+use JBBCode\CodeDefinitionSet;
 
 /**
+ * Home page of jBBCode http://jbbcode.com/
+ * 
  * 
  * @author Belosludcev Vasilij http://mihaly4.ru
  */
-class BbCodeBehavior extends Behavior
+class BBCodeBehavior extends Behavior
 {
     
     /**
@@ -55,6 +59,12 @@ class BbCodeBehavior extends Behavior
      */
     public $defaultCodeDefinitionSet;
     
+    public $codeDefinitionsBuilder = [];
+    
+    public $codeDefinitionsSet = [];
+    
+    public $asHtml = true;
+    
     /**
      * @inheritdoc
      */
@@ -84,17 +94,48 @@ class BbCodeBehavior extends Behavior
     
     public function beforeSave($event)
     {
-        $this->owner->{$this->saveAttribute} = $this->parsing();
+        $this->owner->{$this->saveAttribute} = $this->process();
     }
     
-    protected function parsing()
+    protected function process()
     {
         $parser = new Parser();
         $parser->addCodeDefinitionSet(new $this->defaultCodeDefinitionSet());
 
+        // add builders
+        foreach ($this->codeDefinitionsBuilder as $item) {
+            if (is_string($item)) {
+                $builder = new $item;
+                if ($builder instanceof CodeDefinitionBuilder) {
+                    $parser->addCodeDefinition($builder->build());
+                }
+            } elseif ($item instanceof CodeDefinitionBuilder) {
+                $parser->addCodeDefinition($item->build());
+            } elseif (is_callable($item)) {
+                $parser->addCodeDefinition(call_user_func_array($item, [new CodeDefinitionBuilder]));  
+            } elseif (isset($item[0]) && isset($item[1])) {
+                $builder = new CodeDefinitionBuilder($item[0], $item[1]);
+                $parser->addCodeDefinition($builder->build());
+            }
+        }       
+        //added definition set
+        foreach ($this->codeDefinitionsSet as $item) {
+            if (is_string($item)) {
+                $set = new $item;
+                if ($set instanceof CodeDefinitionSet) {
+                    $parser->addCodeDefinitionSet($set);
+                }
+            } elseif ($item instanceof CodeDefinitionSet) {
+                $parser->addCodeDefinitionSet($item);
+            }
+        } 
+        
         $parser->parse($this->owner->{$this->attribute});
-
-        return $parser->getAsHtml();
+        
+        if ($this->asHtml) {
+            return $parser->getAsHtml();
+        } 
+        return $parser->getAsBBCode();
     }
     
 }
