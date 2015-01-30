@@ -1,5 +1,20 @@
 # yii2-bbcode
 
+##Installation
+The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+
+Either run
+```
+$ php composer.phar require bupy7/yii2-bbcode "dev-master"
+```
+
+or add
+```
+"bupy7/yii2-bbcode": "dev-master"
+```
+
+to the **require** section of your **composer.json** file.
+
 ## Support BB-codes
 
 | **BB-code** | **HTML Result**  |
