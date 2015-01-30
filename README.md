@@ -48,7 +48,7 @@ public function behaviors()
 }
 ```
 
-## Support BB-codes
+## Support BB-code
 
 | **BB-code** | **HTML Result**  |
 |-------------|-----------|
