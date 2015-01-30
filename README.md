@@ -1,6 +1,6 @@
 # yii2-bbcode
 
-## Examples
+## Support BB-codes
 
 | **BB-code** | **HTML Result**  |
 |-------------|-----------|
