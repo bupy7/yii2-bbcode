@@ -1,0 +1,25 @@
+{
+    "name": "bupy7/yii2-bbcode",
+    "description": "A lightweight but extensible BBCode parser.",
+    "keywords": ["yii2", "extension", "behavior", "bbcode", "parser"],
+    "homepage": "https://github.com/bupy7/yii2-bbcode",
+    "type": "yii2-extension",
+    "license": "BSD 3-Clause",
+    "authors": [
+        {
+            "name": "Vasilij Belosludcev",
+            "email": "bupy765@gmail.com",
+            "homepage": "http://mihaly4.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "jbbcode/jbbcode": "1.3.*",
+    },
+    "autoload": {
+        "psr-4": {
+            "bupy7\\bbcode\\": ""
+        }
+    }
+}
