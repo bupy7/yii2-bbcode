@@ -43,4 +43,6 @@ Result:
 [center]align text by center[/center]
 [left]align text by left of edge[/left]
 [right]align text by right of edge[/right]
+
+[hr][/hr]
 ```

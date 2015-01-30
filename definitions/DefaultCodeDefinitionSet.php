@@ -28,6 +28,7 @@ use bupy7\bbcode\validators\NumberValidator;
  * [center]text by center[/center]
  * [right]text align by right[/right]
  * [left]text align by left[/left]
+ * [hr][/hr]
  *
  * @author Belosludcev Vasilij http://github.com/bupy7
  */
@@ -57,7 +58,6 @@ class DefaultCodeDefinitionSet extends \JBBCode\DefaultCodeDefinitionSet
         /* [h=1|2|3|4|5|6] header tag */
         $builder = new CodeDefinitionBuilder('h', '<h{option}>{param}</h{option}>');
         $builder->setUseOption(true)
-            ->setParseContent(true)
             ->setOptionValidator(new NumberValidator([
                 'integerOnly' => true,
                 'min' => 1,
@@ -67,19 +67,20 @@ class DefaultCodeDefinitionSet extends \JBBCode\DefaultCodeDefinitionSet
         
         /* [center] align text by center */
         $builder = new CodeDefinitionBuilder('center', '<div style="text-align: center">{param}</div>');
-        $builder->setParseContent(true);
         array_push($this->definitions, $builder->build());
         
         /* [left] align text by left of edge */
         $builder = new CodeDefinitionBuilder('left', '<div style="text-align: left">{param}</div>');
-        $builder->setParseContent(true);
         array_push($this->definitions, $builder->build());
         
         /* [right] align text by right of edge */
         $builder = new CodeDefinitionBuilder('right', '<div style="text-align: right">{param}</div>');
-        $builder->setParseContent(true);
         array_push($this->definitions, $builder->build());
         
+        /* [hr] separate, horizontal line */
+        $builder = new CodeDefinitionBuilder('hr', '<hr />');
+        $builder->setParseContent(false);
+        array_push($this->definitions, $builder->build());       
         
         /* [list] with marker */
         array_push($this->definitions, new ListMarkerCodeDefinition);
