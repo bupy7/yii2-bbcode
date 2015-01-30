@@ -2,8 +2,14 @@
 
 ### Examples
 
+Bold:
 ```
 [b]bold text[/b]
+```
+Result:
+<strong>bold text</strong>
+
+```
 [i]italic text[/i]
 [u]underline[/u]
 
