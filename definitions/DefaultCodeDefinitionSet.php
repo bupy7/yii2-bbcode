@@ -3,7 +3,7 @@
 namespace bupy7\bbcode\definitions;
 
 use JBBCode\CodeDefinitionBuilder;
-use bupy7\bbcode\validators\IntegerValidator;
+use bupy7\bbcode\validators\NumberValidator;
 
 /**
  * Provides a default set of common bbcode definitions.
@@ -35,7 +35,13 @@ class DefaultCodeDefinitionSet extends \JBBCode\DefaultCodeDefinitionSet
         
         /* [h=1|2|3|4|5|6] header tag */
         $builder = new CodeDefinitionBuilder('h', '<h{option}>{param}</h{option}>');
-        $builder->setUseOption(true)->setParseContent(true)->setOptionValidator(new IntegerValidator);
+        $builder->setUseOption(true)
+            ->setParseContent(true)
+            ->setOptionValidator(new NumberValidator([
+                'integerOnly' => true,
+                'min' => 1,
+                'max' => 6,
+            ]));
         array_push($this->definitions, $builder->build());
     }
 

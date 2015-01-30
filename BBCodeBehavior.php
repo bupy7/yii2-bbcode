@@ -210,7 +210,6 @@ class BBCodeBehavior extends Behavior
         $parser = new Parser();
         
         $parser->addCodeDefinitionSet(new $this->defaultCodeDefinitionSet());
-        $parser->addCodeDefinition(new definitions\ListCodeDefinition);
 
         // add definitions builder
         foreach ($this->codeDefinitionsBuilder as $item) {

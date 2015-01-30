@@ -9,10 +9,14 @@ namespace bupy7\bbcode;
  * [b]bold[/b]
  * [i]italic[/i]
  * [u]underlining[/u]
- * [list]
+ * [list] with marker
  *     [*] first
  *     [*] second
- * [/list],
+ * [/list]
+ * [list=1] with number 
+ *     [*] first
+ *     [*] second
+ * [/list]
  * [url=http://domain.zone]This is link[/url]
  * [color=red]color![/color]
  * [img=This is image]http://link.to/image.png[/img]
@@ -24,6 +28,18 @@ namespace bupy7\bbcode;
  */
 class Parser extends \JBBCode\Parser
 {
+    
+    /**
+     * @inheritdoc
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        
+        $this->addCodeDefinition(new definitions\ListMarkerCodeDefinition);
+        $this->addCodeDefinition(new definitions\ListNumberCodeDefinition);
+    }
+    
 
     /**
      * Insert <br /> tag to new line.
