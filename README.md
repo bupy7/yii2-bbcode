@@ -23,44 +23,5 @@
 | ```[left]align by left[/left]``` | ```<div style="text-align: left">align by left</div>``` |
 | ```[right]align by right[/right]``` | ```<div style="text-align: right">align by right</div>``` |
 | ```[hr][/hr]``` | ```<hr />``` |
-| ```[list] [\*]first [\*]second [/list]``` | ```<ul> <li>first</li> <li>second</li> </ul>```
-| ```[list=1] [\*]first [\*]second [/list]``` | ```<ol> <li>first</li> <li>second</li> </ol>```
-
-<table>
-  <tr>
-    <td>
-      <pre>
-      [list]
-        [*]first
-        [*]second
-      [/list]
-      </pre>
-    </td>
-    <td>
-      <pre>
-      <ul>
-        <li>first</li>
-        <li>second</li>
-      </ul>
-      </pre>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <pre>
-      [list=1]
-        [*]first
-        [*]second
-      [/list]
-      </pre>
-    </td>
-    <td>
-      <pre>
-      <ol>
-        <li>first</li>
-        <li>second</li>
-      </ol>
-      </pre>
-    </td>
-  <tr>
-</table>
+| ```[list][*]first[*]second[/list]``` | ```<ul><li>first</li><li>second</li></ul>``` |
+| ```[list=1][*]first[*]second[/list]``` | ```<ol><li>first</li><li>second</li></ol>``` |
