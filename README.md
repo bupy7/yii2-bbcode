@@ -41,6 +41,8 @@
 </ul>
 ```
 
+#### Numerical list
+
 **BB-code**
 ```
 [list=1]
@@ -48,8 +50,6 @@
   [*]second
 [/list]
 ```
-
-#### Numerical list
 
 **HTML**
 ```
