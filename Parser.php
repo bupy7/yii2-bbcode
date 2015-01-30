@@ -16,7 +16,8 @@ class Parser extends \JBBCode\Parser
      */
     public function parse($str)
     {
-        $str = preg_replace("/(\r\n|\n\r|\n|\r)/", "<br />", $str);
+        $str = preg_replace('/(\r\n|\n\r|\n|\r)/', '<br />', $str);
+        $str = preg_replace('/(<br[^>]*>){2}/', '<br />', $str);
         
         return parent::parse($str);
     }
