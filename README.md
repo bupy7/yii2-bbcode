@@ -27,38 +27,38 @@
 <table>
   <tr>
     <td>
-      ```
+      <code>
       [list]
         [*]first
         [*]second
       [/list]
-      ```
+      </code>
     </td>
     <td>
-      ```
+      <code>
       <ul>
         <li>first</li>
         <li>second</li>
       </ul>
-      ```
+      </code>
     </td>
   </tr>
   <tr>
     <td>
-      ```
+      <code>
       [list=1]
         [*]first
         [*]second
       [/list]
-      ```
+      </code>
     </td>
     <td>
-      ```
+      <code>
       <ol>
         <li>first</li>
         <li>second</li>
       </ol>
-      ```
+      </code>
     </td>
   <tr>
 </table>
