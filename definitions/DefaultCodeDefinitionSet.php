@@ -23,7 +23,7 @@ use bupy7\bbcode\validators\NumberValidator;
  * [color=red]color![/color]
  * [img=This is image]http://link.to/image.png[/img]
  * [p]paragraph[/p]
- * [blockquote]blockquote[/blockquote]
+ * [quote]blockquote[/quote]
  * [h=1|2|3|4|5|6]header[/h=1|2|3|4|5|6]
  * [center]text by center[/center]
  * [right]text align by right[/right]
@@ -66,17 +66,17 @@ class DefaultCodeDefinitionSet extends \JBBCode\DefaultCodeDefinitionSet
         array_push($this->definitions, $builder->build());
         
         /* [center] align text by center */
-        $builder = new CodeDefinitionBuilder('center', '<span style="text-align:center">{param}</span>');
+        $builder = new CodeDefinitionBuilder('center', '<div style="text-align: center">{param}</div>');
         $builder->setParseContent(true);
         array_push($this->definitions, $builder->build());
         
         /* [left] align text by left of edge */
-        $builder = new CodeDefinitionBuilder('left', '<span style="text-align:left">{param}</span>');
+        $builder = new CodeDefinitionBuilder('left', '<div style="text-align: left">{param}</div>');
         $builder->setParseContent(true);
         array_push($this->definitions, $builder->build());
         
         /* [right] align text by right of edge */
-        $builder = new CodeDefinitionBuilder('right', '<span style="text-align:right">{param}</span>');
+        $builder = new CodeDefinitionBuilder('right', '<div style="text-align: right">{param}</div>');
         $builder->setParseContent(true);
         array_push($this->definitions, $builder->build());
         
