@@ -1,6 +1,6 @@
 {
     "name": "bupy7/yii2-bbcode",
-    "description": "A lightweight but extensible BBCode parser.",
+    "description": "A lightweight but extensible BBCode parser for Yii2.",
     "keywords": ["yii2", "extension", "behavior", "bbcode", "parser"],
     "homepage": "https://github.com/bupy7/yii2-bbcode",
     "type": "yii2-extension",
