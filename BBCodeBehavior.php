@@ -119,7 +119,7 @@ class BBCodeBehavior extends Behavior
      *      },
      * ]
      */
-    public $codeDefinitionsBuilder = [];
+    public $codeDefinitionBuilder = [];
     
     /**
      * @var array BB-code definitions extended of class \JBBCode\CodeDefinitionSet
@@ -132,7 +132,7 @@ class BBCodeBehavior extends Behavior
      *      $className,
      * ]
      */
-    public $codeDefinitionsSet = [];
+    public $codeDefinitionSet = [];
     
     /**
      * @var array BB-code definitions extended of class \JBBCode\CodeDefinition
@@ -145,7 +145,7 @@ class BBCodeBehavior extends Behavior
      *      $className,
      * ]
      */
-    public $codeDefinitions = [];
+    public $codeDefinition = [];
     
     /**
      * @var boolean Whether to return content as html or bb-codes. If property 
@@ -212,7 +212,7 @@ class BBCodeBehavior extends Behavior
         $parser->addCodeDefinitionSet(new $this->defaultCodeDefinitionSet());
 
         // add definitions builder
-        foreach ($this->codeDefinitionsBuilder as $item) {
+        foreach ($this->codeDefinitionBuilder as $item) {
             if (is_string($item)) {
                 $builder = new $item;
                 if ($builder instanceof CodeDefinitionBuilder) {
@@ -228,7 +228,7 @@ class BBCodeBehavior extends Behavior
             }
         }       
         //added definitions set
-        foreach ($this->codeDefinitionsSet as $item) {
+        foreach ($this->codeDefinitionSet as $item) {
             if (is_string($item)) {
                 $set = new $item;
                 if ($set instanceof CodeDefinitionSet) {
@@ -239,7 +239,7 @@ class BBCodeBehavior extends Behavior
             }
         } 
         //added definitions
-        foreach ($this->codeDefinitions as $item) {
+        foreach ($this->codeDefinition as $item) {
             if (is_string($item)) {
                 $set = new $item;
                 if ($set instanceof CodeDefinition) {
