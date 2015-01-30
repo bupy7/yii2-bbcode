@@ -27,38 +27,30 @@
 <table>
   <tr>
     <td>
-      <pre>
-      [list]
+      <pre>[list]
         [*]first
         [*]second
-      [/list]
-      </pre>
+      [/list]</pre>
     </td>
     <td>
-      <code>
-      <ul>
+      <pre><ul>
         <li>first</li>
         <li>second</li>
-      </ul>
-      </code>
+      </ul></pre>
     </td>
   </tr>
   <tr>
     <td>
-      <code>
-      [list=1]
+      <pre>[list=1]
         [*]first
         [*]second
-      [/list]
-      </code>
+      [/list]</pre>
     </td>
     <td>
-      <code>
-      <ol>
+      <pre><ol>
         <li>first</li>
         <li>second</li>
-      </ol>
-      </code>
+      </ol></pre>
     </td>
   <tr>
 </table>
