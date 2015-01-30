@@ -7,8 +7,8 @@
 | [b]bold[/b] | <strong>bold</strong>
 | [i]italic[/i] |
 | [u]underline[/u] |
-| [list]<br>[*]first<br>[*]second<br>[/list] |
-| [list=1]<br>[*]first<br>[*]second<br>[/list] |
+| [list]<br>[\*]first<br>[\*]second<br>[/list] |
+| [list=1]<br>[\*]first<br>[\*]second<br>[/list] |
 | [url=http://github.com]GitHub[/url] |
 | [color=red]color[/color] |
 | [img=My photo]http://link.to/image.png[/img] |
