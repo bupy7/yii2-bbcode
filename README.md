@@ -32,6 +32,7 @@
 [/list]
 ```
 
+##### Markup list
 **HTML**
 ```
 <ul>
@@ -47,6 +48,8 @@
   [*]second
 [/list]
 ```
+
+##### Numerical list
 
 **HTML**
 ```
