@@ -1,7 +1,6 @@
 <?php
 namespace bupy7\bbcode;
 
-use Yii;
 use yii\helpers\HtmlPurifier;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
@@ -11,8 +10,11 @@ use JBBCode\CodeDefinitionBuilder;
 use JBBCode\CodeDefinitionSet;
 
 /**
- * Home page of jBBCode http://jbbcode.com/
+ * Home page of extension: https://github.com/bupy7/yii2-bbcode/
+ * Home page of jBBCode: http://jbbcode.com/
+ * Home page of HtmlPurifier: http://htmlpurifier.org/
  * 
+ * Behavior for parsing BB-codes at base jBBCode and HtmlPurifier.
  * 
  * @author Belosludcev Vasilij http://mihaly4.ru
  */
@@ -26,10 +28,20 @@ class BBCodeBehavior extends Behavior
     public $attribute;
     
     /**
-     * @var string Attribute name where will be save result the pasing BBCodes.
+     * @var string Attribute name where will be save result the pasing BB-codes.
      * If this property is NULL will be an exception is thrown.
      */
     public $saveAttribute;
+    
+    /**
+     * @var boolean Whether calling HtmlPurifier before process of parsing BB-codes.
+     */
+    public $enableHtmlPurifierBefore = false;
+     
+    /**
+     * @var boolean Whether calling HtmlPurifier after process of parsing BB-codes.
+     */
+    public $enableHtmlPurifierAfter = false;
     
     /**
      * @var array|\Closure|null $config The config to use for HtmlPurifier.
@@ -50,19 +62,82 @@ class BBCodeBehavior extends Behavior
      *            ->addAttribute('img', 'data-type', 'Text');
      *   })
      *   ~~~
+     *   This is configuration apply before process of parsing BB-codes.
      */
-    public $configHtmlPurifier = [];
+    public $configHtmlPurifierBefore = [];
+    
+    /**
+     * @var array|\Closure|null $config The config to use for HtmlPurifier.
+     * If not specified or `null` the default config will be used.
+     * You can use an array or an anonymous function to provide configuration options:
+     *
+     * - An array will be passed to the `HTMLPurifier_Config::create()` method.
+     * - An anonymous function will be called after the config was created.
+     *   The signature should be: `function($config)` where `$config` will be an
+     *   instance of `HTMLPurifier_Config`.
+     *
+     *   Here is a usage example of such a function:
+     *
+     *   ~~~
+     *   // Allow the HTML5 data attribute `data-type` on `img` elements.
+     *   function($config) {
+     *     $config->getHTMLDefinition(true)
+     *            ->addAttribute('img', 'data-type', 'Text');
+     *   })
+     *   ~~~
+     *   This is configuration apply after process of parsing BB-codes.
+     */
+    public $configHtmlPurifierAfter = [];
     
     /**
      * @var string Class name of provides a default set of common bbcode definitions. 
      * By default '\JBBCode\DefaultCodeDefinitionSet'.
      */
-    public $defaultCodeDefinitionSet;
+    public $defaultCodeDefinitionSet = '\JBBCode\DefaultCodeDefinitionSet';
     
+    /**
+     * @var array Adding new custom bbcodes to your parser is easy. 
+     * For simple text-replacement bbcodes, just create a replacement string 
+     * that contains {param} where the bbcode's content should go. 
+     * Optionally, you may use the {option} variable for an option. 
+     * Example: 
+     * [
+     *      // as elements of array
+     *      ['quote', '<blockquote>{param}</blockquote>'],
+     * 
+     *      // as class name where class is instance of extended class \JBBCode\CodeDefinitionBuilder
+     *      '/namespace/to/CodeDefinitionBuilder/ExtendedClassName',
+     * 
+     *      // as extended instance of extended class \JBBCode\CodeDefinitionBuilder
+     *      $className,
+     * 
+     *      // as callable function where $builder is instance of class \JBBCode\CodeDefinitionBuilder
+     *      function($builder) {
+     *          $builder->setTagName('code');
+     *          $builder->setReplacementText('<pre>{param}</pre>');
+     *          return $builder;
+     *      },
+     * ]
+     */
     public $codeDefinitionsBuilder = [];
     
+    /**
+     * @var array BB-code definitions extended of class \JBBCode\CodeDefinitionSet
+     * Example:
+     * [
+     *      // as class name where class is instance of extended class \JBBCode\CodeDefinitionSet
+     *      '/namespace/to/CodeDefinitionSet/ExtendedClassName',
+     * 
+     *      // as extended instance of extended class \JBBCode\CodeDefinitionSet
+     *      $className,
+     * ]
+     */
     public $codeDefinitionsSet = [];
     
+    /**
+     * @var boolean Whether to return content as html or bb-codes. If property 
+     * is `true` then return as HTML, else as BB-codes.
+     */
     public $asHtml = true;
     
     /**
@@ -72,9 +147,6 @@ class BBCodeBehavior extends Behavior
     {
         if (!$this->attribute || !$this->saveAttribute) {
             throw new InvalidConfigException('Invalid configuration of property `attribute` or `saveAttributes`.');
-        }
-        if (!$this->defaultCodeDefinitionSet) {
-            $this->defaultCodeDefinitionSet = '\JBBCode\DefaultCodeDefinitionSet';
         }
         parent::init();
     }
@@ -92,12 +164,35 @@ class BBCodeBehavior extends Behavior
         ];
     }
     
+    /**
+     * Parsing BB-codes before save of model.
+     * 
+     * @param \yii\base\Event $event
+     */
     public function beforeSave($event)
     {
-        $this->owner->{$this->saveAttribute} = $this->process();
+        $content = $this->owner->{$this->attribute};
+       
+        if ($this->enableHtmlPurifierBefore) {
+            $content = HtmlPurifier::process($content, $this->configHtmlPurifierBefore);
+        }
+        
+        $content = $this->process($content);
+        
+        if ($this->enableHtmlPurifierAfter) {
+            $content = HtmlPurifier::process($content, $this->configHtmlPurifierAfter);
+        }
+        
+        $this->owner->{$this->saveAttribute} = $content;
     }
     
-    protected function process()
+    /**
+     * Parsing of BB-codes.
+     * 
+     * @param string $content Content for parsing.
+     * @return string
+     */
+    protected function process($content)
     {
         $parser = new Parser();
         $parser->addCodeDefinitionSet(new $this->defaultCodeDefinitionSet());
@@ -130,7 +225,7 @@ class BBCodeBehavior extends Behavior
             }
         } 
         
-        $parser->parse($this->owner->{$this->attribute});
+        $parser->parse($content);
         
         if ($this->asHtml) {
             return $parser->getAsHtml();
