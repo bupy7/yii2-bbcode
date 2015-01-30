@@ -44,3 +44,7 @@ to the **require** section of your **composer.json** file.
 | ```[hr][/hr]``` | ```<hr />``` |
 | ```[list][*]first[*]second[/list]``` | ```<ul><li>first</li><li>second</li></ul>``` |
 | ```[list=1][*]first[*]second[/list]``` | ```<ol><li>first</li><li>second</li></ol>``` |
+
+##License
+
+yii2-bbcode is released under the BSD 3-Clause License.
