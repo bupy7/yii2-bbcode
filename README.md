@@ -24,6 +24,8 @@
 | ```[right]align by right[/right]``` | ```<div style="text-align: right">align by right</div>``` |
 | ```[hr][/hr]``` | ```<hr />``` |
 
+#### Markup list
+
 **BB-code**
 ```
 [list]
@@ -32,7 +34,6 @@
 [/list]
 ```
 
-#### Markup list
 **HTML**
 ```
 <ul>
