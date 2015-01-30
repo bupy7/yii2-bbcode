@@ -27,12 +27,12 @@
 <table>
   <tr>
     <td>
-      <code>
+      <pre>
       [list]
         [*]first
         [*]second
       [/list]
-      </code>
+      </pre>
     </td>
     <td>
       <code>
