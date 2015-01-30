@@ -1,6 +1,6 @@
 # yii2-bbcode
 
-### Examples
+## Examples
 
 | **BB-code** | **HTML**  |
 |-------------|-----------|
@@ -32,7 +32,7 @@
 [/list]
 ```
 
-##### Markup list
+#### Markup list
 **HTML**
 ```
 <ul>
@@ -49,7 +49,7 @@
 [/list]
 ```
 
-##### Numerical list
+#### Numerical list
 
 **HTML**
 ```
