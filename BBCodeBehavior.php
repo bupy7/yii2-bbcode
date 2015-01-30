@@ -5,9 +5,9 @@ use yii\helpers\HtmlPurifier;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
 use yii\base\InvalidConfigException;
-use JBBCode\Parser;
 use JBBCode\CodeDefinitionBuilder;
 use JBBCode\CodeDefinitionSet;
+use JBBCode\CodeDefinition;
 
 /**
  * Home page of extension: https://github.com/bupy7/yii2-bbcode/
@@ -15,6 +15,20 @@ use JBBCode\CodeDefinitionSet;
  * Home page of HtmlPurifier: http://htmlpurifier.org/
  * 
  * Behavior for parsing BB-codes at base jBBCode and HtmlPurifier.
+ * Support BB-codes: 
+ * [b]bold[/b]
+ * [i]italic[/i]
+ * [u]underlining[/u]
+ * [list]
+ *     [*] first
+ *     [*] second
+ * [/list],
+ * [url=http://domain.zone]This is link[/url]
+ * [color=red]color![/color]
+ * [img=This is image]http://link.to/image.png[/img]
+ * [p]paragraph[/p]
+ * [blockquote]blockquote[/blockquote]
+ * [h=1|2|3|4|5|6]header[/h=1|2|3|4|5|6]
  * 
  * @author Belosludcev Vasilij http://mihaly4.ru
  */
@@ -91,9 +105,9 @@ class BBCodeBehavior extends Behavior
     
     /**
      * @var string Class name of provides a default set of common bbcode definitions. 
-     * By default '\JBBCode\DefaultCodeDefinitionSet'.
+     * By default '\bupy7\bbcode\definitions\DefaultCodeDefinitionSet'.
      */
-    public $defaultCodeDefinitionSet = '\JBBCode\DefaultCodeDefinitionSet';
+    public $defaultCodeDefinitionSet = '\bupy7\bbcode\definitions\DefaultCodeDefinitionSet';
     
     /**
      * @var array Adding new custom bbcodes to your parser is easy. 
@@ -133,6 +147,19 @@ class BBCodeBehavior extends Behavior
      * ]
      */
     public $codeDefinitionsSet = [];
+    
+    /**
+     * @var array BB-code definitions extended of class \JBBCode\CodeDefinition
+     * Example:
+     * [
+     *      // as class name where class is instance of extended class \JBBCode\CodeDefinition
+     *      '/namespace/to/CodeDefinition/ExtendedClassName',
+     * 
+     *      // as extended instance of extended class \JBBCode\CodeDefinition
+     *      $className,
+     * ]
+     */
+    public $codeDefinitions = [];
     
     /**
      * @var boolean Whether to return content as html or bb-codes. If property 
@@ -195,9 +222,11 @@ class BBCodeBehavior extends Behavior
     protected function process($content)
     {
         $parser = new Parser();
+        
         $parser->addCodeDefinitionSet(new $this->defaultCodeDefinitionSet());
+        $parser->addCodeDefinition(new definitions\ListCodeDefinition);
 
-        // add builders
+        // add definitions builder
         foreach ($this->codeDefinitionsBuilder as $item) {
             if (is_string($item)) {
                 $builder = new $item;
@@ -213,7 +242,7 @@ class BBCodeBehavior extends Behavior
                 $parser->addCodeDefinition($builder->build());
             }
         }       
-        //added definition set
+        //added definitions set
         foreach ($this->codeDefinitionsSet as $item) {
             if (is_string($item)) {
                 $set = new $item;
@@ -222,6 +251,17 @@ class BBCodeBehavior extends Behavior
                 }
             } elseif ($item instanceof CodeDefinitionSet) {
                 $parser->addCodeDefinitionSet($item);
+            }
+        } 
+        //added definitions
+        foreach ($this->codeDefinitions as $item) {
+            if (is_string($item)) {
+                $set = new $item;
+                if ($set instanceof CodeDefinition) {
+                    $parser->addCodeDefinition($set);
+                }
+            } elseif ($item instanceof CodeDefinition) {
+                $parser->addCodeDefinition($item);
             }
         } 
         
