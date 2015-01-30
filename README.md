@@ -19,6 +19,14 @@ or add
 
 to the **require** section of your **composer.json** file.
 
+## How it use
+
+Added you view following code:
+
+```php
+echo $form->field($model, 'content')->textArea();
+```
+
 ## Support BB-codes
 
 | **BB-code** | **HTML Result**  |
