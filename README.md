@@ -21,10 +21,31 @@ to the **require** section of your **composer.json** file.
 
 ## How it use
 
-Added you view following code:
+Add you view following code:
 
 ```php
 echo $form->field($model, 'content')->textArea();
+```
+
+Add you model following code:
+
+```php
+use bupy7\bbcode\BBCodeBehavior;
+
+public function behaviors()
+{
+    return [
+        ...
+        
+        [
+            'class' => BBCodeBehavior::className(),
+            'attribute' => 'content',
+            'saveAttribute' => 'purified_content',
+        ],
+        
+        ...
+    ];
+}
 ```
 
 ## Support BB-codes
