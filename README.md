@@ -24,38 +24,41 @@
 | ```[right]align by right[/right]``` | ```<div style="text-align: right">align by right</div>``` |
 | ```[hr][/hr]``` | ```<hr />``` |
 
-#### Markup list
-
-**BB-code**
-```
-[list]
-  [*]first
-  [*]second
-[/list]
-```
-
-**HTML**
-```
-<ul>
-  <li>first</li>
-  <li>second</li>
-</ul>
-```
-
-#### Numerical list
-
-**BB-code**
-```
-[list=1]
-  [*]first
-  [*]second
-[/list]
-```
-
-**HTML**
-```
-<ol>
-  <li>first</li>
-  <li>second</li>
-</ol>
-```
+<table>
+  <tr>
+    <td>
+      ```
+      [list]
+        [*]first
+        [*]second
+      [/list]
+      ```
+    </td>
+    <td>
+      ```
+      <ul>
+        <li>first</li>
+        <li>second</li>
+      </ul>
+      ```
+    </td>
+  </tr>
+  <tr>
+    <td>
+      ```
+      [list=1]
+        [*]first
+        [*]second
+      [/list]
+      ```
+    </td>
+    <td>
+      ```
+      <ol>
+        <li>first</li>
+        <li>second</li>
+      </ol>
+      ```
+    </td>
+  <tr>
+</table>
