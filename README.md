@@ -2,7 +2,7 @@
 
 ## Examples
 
-| **BB-code** | **HTML**  |
+| **BB-code** | **HTML Result**  |
 |-------------|-----------|
 | ```[b]bold[/b]``` | ```<strong>bold</strong>``` |
 | ```[i]italic[/i]``` | ```<em>italic</em>``` |
