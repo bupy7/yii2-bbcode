@@ -7,7 +7,10 @@
 | [b]bold[/b] | ```<strong>bold</strong>```
 | [i]italic[/i] | ```<em>italic</em>```
 | [u]underline[/u] | ```<u>underline</u>```
-| ```[list]<br>[\*]first<br>[\*]second<br>[/list]``` |
+| ```
+[list]<br>[\*]first
+[\*]second<br>[/list]
+``` |
 | ```[list=1]<br>[\*]first<br>[\*]second<br>[/list]``` |
 | [url=http://github.com]GitHub[/url] |
 | [color=red]color[/color] |
