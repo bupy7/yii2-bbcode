@@ -1,5 +1,9 @@
 # yii2-bbcode
 
+Behavior for parsing BB-codes at base jBBCode and HtmlPurifier for Yii2.
+This behavior very simple expand under your demands.
+Behavior of use [jBBCode](http://jbbcode.com) and [HtmlPurifier](http://htmlpurifier.org/).
+
 ##Installation
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
