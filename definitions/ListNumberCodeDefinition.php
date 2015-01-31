@@ -41,9 +41,9 @@ class ListNumberCodeDefinition extends CodeDefinition
 
         $listPieces = explode('[*]', $bodyHtml);
         unset($listPieces[0]);
-        $listPieces = array_map(function($li) { return '<li>'.$li.'</li>' . "\n"; }, $listPieces);
+        $listPieces = array_map(function($li) { return Html::tag('li', $li); }, $listPieces);
         
-        return '<ol>'.implode('', $listPieces).'</ol>';    
+        return Html::tag('ol', implode('', $listPieces));    
     }
 
 }
