@@ -4,6 +4,7 @@ namespace bupy7\bbcode\definitions;
 
 use JBBCode\ElementNode;
 use JBBCode\CodeDefinition;
+use yii\helpers\Html;
 
 /**
  * Implements a [list] code definition with marker that provides the following syntax:
@@ -36,9 +37,9 @@ class ListMarkerCodeDefinition extends CodeDefinition
 
         $listPieces = explode('[*]', $bodyHtml);
         unset($listPieces[0]);
-        $listPieces = array_map(function($li) { return '<li>'.$li.'</li>' . "\n"; }, $listPieces);
+        $listPieces = array_map(function($li) { return Html::tag('li', $li); }, $listPieces);
         
-        return '<ul>'.implode('', $listPieces).'</ul>';    
+        return Html::tag('ul', implode('', $listPieces));    
     }
 
 }
