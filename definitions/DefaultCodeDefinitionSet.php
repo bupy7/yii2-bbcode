@@ -48,7 +48,7 @@ class DefaultCodeDefinitionSet extends \JBBCode\DefaultCodeDefinitionSet
         parent::__construct();
         
         /* [quote] blockquote tag */
-        $builder = new CodeDefinitionBuilder('quote', '<blockquote>{param}</blockquote>');
+        $builder = new CodeDefinitionBuilder('quote', '<blockquote><p>{param}</p></blockquote>');
         array_push($this->definitions, $builder->build());
         
         /* [p] paragraph tag */
