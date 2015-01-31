@@ -60,7 +60,7 @@ public function behaviors()
 | ```[img=My photo]http://link.to/image.png[/img]``` | ```<img src="http://link.to/image.png" alt="My photo" />``` |
 | ```[img]http://link.to/image.png[/img]``` | ```<img src="http://link.to/image.png" />``` |
 | ```[p]paragraph[/p]``` | ```<p>paragraph</p>``` |
-| ```[quote]blockquote[/quote]``` | ```<blockquote></blockquote>``` |
+| ```[quote]blockquote[/quote]``` | ```<blockquote><p>blockquote</p></blockquote>``` |
 | ```[h=1]header 1[/h]``` | ```<h1>header 1</h1>``` |
 | ```[h=2]header 2[/h]``` | ```<h2>header 2</h2>``` |
 | ```[h=3]header 3[/h]``` | ```<h3>header 3</h3>``` |
