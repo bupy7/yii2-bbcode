@@ -74,6 +74,98 @@ public function behaviors()
 | ```[list][*]first[*]second[/list]``` | ```<ul><li>first</li><li>second</li></ul>``` |
 | ```[list=1][*]first[*]second[/list]``` | ```<ol><li>first</li><li>second</li></ol>``` |
 
+## How added new BB-code
+
+1. Adding new custom bbcodes to your parser is easy. For simple text-replacement bbcodes, just create a replacement string that contains {param} where the bbcode's content should go. Optionally, you may use the {option} variable for an option. 
+
+Example:
+```php
+public function behaviors()
+{
+    return [
+        ...
+        
+        [
+            'class' => BBCodeBehavior::className(),
+            'attribute' => 'content',
+            'saveAttribute' => 'purified_content',
+            'codeDefinitionBuilder' => [
+                // as elements of array
+                ['quote', '<blockquote>{param}</blockquote>'],
+            
+                // as class name where class is instance of extended class \JBBCode\CodeDefinitionBuilder
+                '/namespace/to/CodeDefinitionBuilder/ExtendedClassName',
+            
+                // as extended instance of extended class \JBBCode\CodeDefinitionBuilder
+                $className,
+            
+                // as callable function where $builder is instance of class \JBBCode\CodeDefinitionBuilder
+                function($builder) {
+                    $builder->setTagName('code');
+                    $builder->setReplacementText('<pre>{param}</pre>');
+                    return $builder;
+                },
+            ],
+        ]
+        ...
+    ];
+}        
+```
+
+2. Add BB-code definitions extended of class \JBBCode\CodeDefinitionSet
+
+Example:
+```php
+public function behaviors()
+{
+    return [
+        ...
+        
+        [
+            'class' => BBCodeBehavior::className(),
+            'attribute' => 'content',
+            'saveAttribute' => 'purified_content',
+            'codeDefinitionSet' => [
+                // as class name where class is instance of extended class \JBBCode\CodeDefinitionSet
+                '/namespace/to/CodeDefinitionSet/ExtendedClassName',
+          
+                // as extended instance of extended class \JBBCode\CodeDefinitionSet
+                $className,
+            ],
+        ],
+        
+        ...
+    ];
+}
+```
+
+3. Add BB-code definitions extended of class \JBBCode\CodeDefinition
+
+Example:
+```php
+public function behaviors()
+{
+    return [
+        ...
+        
+        [
+            'class' => BBCodeBehavior::className(),
+            'attribute' => 'content',
+            'saveAttribute' => 'purified_content',
+            'codeDefinition' => [
+                // as class name where class is instance of extended class \JBBCode\CodeDefinition
+                '/namespace/to/CodeDefinition/ExtendedClassName',
+    
+                // as extended instance of extended class \JBBCode\CodeDefinition
+                $className,
+            ],
+        ],
+        
+        ...
+    ];
+}
+```
+
 ##License
 
 yii2-bbcode is released under the BSD 3-Clause License.
