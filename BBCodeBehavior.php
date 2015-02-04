@@ -17,6 +17,7 @@ use JBBCode\CodeDefinition;
  * Behavior for parsing BB-codes at base jBBCode and HtmlPurifier.
  * 
  * @author Belosludcev Vasilij http://mihaly4.ru
+ * @version 1.0
  */
 class BBCodeBehavior extends Behavior
 {
