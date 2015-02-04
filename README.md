@@ -166,6 +166,10 @@ public function behaviors()
 }
 ```
 
+## HtmlPurifier
+
+After and before parsing BB-code can aplly HtmlPurifier with different configuration. See ```bupy7\bbcode\BBCodeBehavior``` for addition information.
+
 ##License
 
 yii2-bbcode is released under the BSD 3-Clause License.
