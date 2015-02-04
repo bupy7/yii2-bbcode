@@ -29,8 +29,11 @@ use bupy7\bbcode\validators\NumberValidator;
  * [right]text align by right[/right]
  * [left]text align by left[/left]
  * [hr]horizontal line[/hr]
- *
+ * 
+ * @inheritdoc
+ * 
  * @author Belosludcev Vasilij http://github.com/bupy7
+ * @version 1.0
  */
 class DefaultCodeDefinitionSet extends \JBBCode\DefaultCodeDefinitionSet
 {
