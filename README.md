@@ -9,7 +9,7 @@ The preferred way to install this extension is through [composer](http://getcomp
 
 Either run
 ```
-$ php composer.phar require bupy7/yii2-bbcode "dev-master"
+$ php composer.phar require bupy7/yii2-bbcode "1.*"
 ```
 
 or add
