@@ -14,7 +14,7 @@ $ php composer.phar require bupy7/yii2-bbcode "1.*"
 
 or add
 ```
-"bupy7/yii2-bbcode": "dev-master"
+"bupy7/yii2-bbcode": "1.*"
 ```
 
 to the **require** section of your **composer.json** file.
