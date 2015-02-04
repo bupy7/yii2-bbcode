@@ -8,6 +8,7 @@ use JBBCode\InputValidator;
  * An NumberValidator for number values. 
  *
  * @author Belosludcev Vasilij http://github.com/bupy7
+ * @version 1.0
  */
 class NumberValidator implements InputValidator
 {
