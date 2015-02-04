@@ -16,6 +16,7 @@ use bupy7\bbcode\validators\NumberValidator;
  * [/list]
  *  
  * @uathor Vasilij Belosludcev http://github.com/bupy7
+ * @version 1.0
  */
 class ListNumberCodeDefinition extends CodeDefinition
 {
