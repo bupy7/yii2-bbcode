@@ -16,6 +16,7 @@ use yii\helpers\Html;
  * [/list]
  *  
  * @author Jackson Owens https://github.com/jbowens
+ * @version 1.0
  */
 class ListMarkerCodeDefinition extends CodeDefinition
 {
