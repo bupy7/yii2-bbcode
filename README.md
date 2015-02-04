@@ -76,7 +76,7 @@ public function behaviors()
 
 ## How added new BB-code
 
-1. Adding new custom bbcodes to your parser is easy. For simple text-replacement bbcodes, just create a replacement string that contains {param} where the bbcode's content should go. Optionally, you may use the {option} variable for an option. 
+Adding new custom bbcodes to your parser is easy. For simple text-replacement bbcodes, just create a replacement string that contains {param} where the bbcode's content should go. Optionally, you may use the {option} variable for an option. 
 
 Example:
 ```php
@@ -112,7 +112,7 @@ public function behaviors()
 }        
 ```
 
-2. Add BB-code definitions extended of class \JBBCode\CodeDefinitionSet
+Add BB-code definitions extended of class \JBBCode\CodeDefinitionSet
 
 Example:
 ```php
@@ -139,7 +139,7 @@ public function behaviors()
 }
 ```
 
-3. Add BB-code definitions extended of class \JBBCode\CodeDefinition
+Add BB-code definitions extended of class \JBBCode\CodeDefinition
 
 Example:
 ```php
