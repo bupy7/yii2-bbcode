@@ -6,7 +6,7 @@ namespace bupy7\bbcode;
  * @inheritdoc
  * 
  * @author Belosludcev Vasilij http://github.com/bupy7
- * @version 1.0
+ * @version 1.1
  */
 class Parser extends \JBBCode\Parser
 {    

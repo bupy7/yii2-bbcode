@@ -29,11 +29,18 @@ use bupy7\bbcode\validators\NumberValidator;
  * [right]text align by right[/right]
  * [left]text align by left[/left]
  * [hr]horizontal line[/hr]
+ * [table]
+ *     [tr]
+ *         [td]first item[/td]
+ *   	   [td]second item[/td]
+ *   	   [td]third item[/td]
+ *     [/tr]
+ * [/table]
  * 
  * @inheritdoc
  * 
  * @author Belosludcev Vasilij http://github.com/bupy7
- * @version 1.0
+ * @version 1.1
  */
 class DefaultCodeDefinitionSet extends \JBBCode\DefaultCodeDefinitionSet
 {
@@ -90,6 +97,10 @@ class DefaultCodeDefinitionSet extends \JBBCode\DefaultCodeDefinitionSet
         
         /* [list=1] with number */
         array_push($this->definitions, new ListNumberCodeDefinition);
+        
+        /* [table] table */
+        array_push($this->definitions, new TableCodeDefinition);
+        
     }
 
 }

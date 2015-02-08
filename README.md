@@ -73,6 +73,7 @@ public function behaviors()
 | ```[hr][/hr]``` | ```<hr />``` |
 | ```[list][*]first[*]second[/list]``` | ```<ul><li>first</li><li>second</li></ul>``` |
 | ```[list=1][*]first[*]second[/list]``` | ```<ol><li>first</li><li>second</li></ol>``` |
+| ```[table][tr][td]first[/td][td]second[/td][/tr][/table]``` | ```<table class="bb-table"><tr><td>first</td><td>second</td></tr></table>``` |
 
 ## How added new BB-code
 
