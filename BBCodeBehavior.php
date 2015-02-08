@@ -116,7 +116,7 @@ class BBCodeBehavior extends Behavior
      *      function($builder) {
      *          $builder->setTagName('code');
      *          $builder->setReplacementText('<pre>{param}</pre>');
-     *          return $builder;
+     *          return $builder->build();
      *      },
      * ]
      */
