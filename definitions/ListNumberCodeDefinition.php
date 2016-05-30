@@ -5,6 +5,7 @@ namespace bupy7\bbcode\definitions;
 use JBBCode\ElementNode;
 use JBBCode\CodeDefinition;
 use bupy7\bbcode\validators\NumberValidator;
+use yii\helpers\Html;
 
 /**
  * Implements a [list] code definition with number that provides the following syntax:
