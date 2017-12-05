@@ -222,7 +222,7 @@ class BBCodeBehavior extends Behavior
             } elseif ($item instanceof CodeDefinitionBuilder) {
                 $parser->addCodeDefinition($item->build());
             } elseif (is_callable($item)) {
-                $parser->addCodeDefinition(call_user_func_array($item, [new CodeDefinitionBuilder]));  
+                $parser->addCodeDefinition(call_user_func_array($item, [new CodeDefinitionBuilder('', '')]));  
             } elseif (isset($item[0]) && isset($item[1])) {
                 $builder = new CodeDefinitionBuilder($item[0], $item[1]);
                 $parser->addCodeDefinition($builder->build());
