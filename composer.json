@@ -4,7 +4,7 @@
     "keywords": ["yii2", "extension", "behavior", "bbcode", "parser"],
     "homepage": "https://github.com/bupy7/yii2-bbcode",
     "type": "yii2-extension",
-    "license": "BSD 3-Clause",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Vasilij Belosludcev",
