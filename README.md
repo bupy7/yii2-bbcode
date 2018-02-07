@@ -4,7 +4,7 @@ Behavior for parsing BB-codes at base jBBCode and HtmlPurifier for Yii2.
 This behavior very simple expand under your demands.
 Behavior of use [jBBCode](http://jbbcode.com) and [HtmlPurifier](http://htmlpurifier.org/).
 
-##Installation
+## Installation
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
 Either run
@@ -171,6 +171,6 @@ public function behaviors()
 
 After and before parsing BB-code can aplly HtmlPurifier with different configuration. See ```bupy7\bbcode\BBCodeBehavior``` for addition information.
 
-##License
+## License
 
 yii2-bbcode is released under the BSD 3-Clause License.
